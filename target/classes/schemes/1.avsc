@@ -1,0 +1,18 @@
+{
+  "namespace": "com.andy.avro",
+  "type": "record",
+  "name": "empdetails",
+  "fields": [
+    {
+      "name": "experience",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "age",
+      "type": "int"
+    }
+  ]
+}

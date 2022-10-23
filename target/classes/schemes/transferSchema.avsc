@@ -1,0 +1,85 @@
+{
+  "name": "incidentRegistrationStatusSchema",
+  "type": "record",
+  "doc": "Avro схема для передачи сервисам статуса регистрации их обращения в системе TaskFlow",
+  "namespace": "com.andy.avro",
+  "fields": [
+    {
+      "name": "header",
+      "doc": "Служебный заголовок события",
+      "type": {
+        "name": "header",
+        "type": "record",
+        "fields": [
+          {
+            "name": "sndType",
+            "doc": "Идентификации типа события и соответствующей ему схемы",
+            "type": "string"
+          },
+          {
+            "name": "sndVersion",
+            "doc": "Версия схемы события",
+            "type": "string"
+          },
+          {
+            "name": "sndDate",
+            "doc": "Дата отправки события источником",
+            "type": {
+              "type": "long",
+              "logicalType": "local-timestamp-micros"
+            }
+          },
+          {
+            "name": "prevEvtID",
+            "doc": "ID предыдущего события в потоке событий источника",
+            "type": "string",
+            "default": "NONE"
+          },
+          {
+            "name": "signature",
+            "doc": "системная подпись",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "body",
+      "doc": "Бизнес атрибуты события",
+      "type": {
+        "name": "body",
+        "type": "record",
+        "fields": [
+          {
+            "name": "IncidentId",
+            "doc": "ID Инцидента",
+            "type": "string"
+          },
+          {
+            "name": "IncidentRegDate",
+            "doc": "Дата регистрации инцидента в TaskFlow",
+            "type": {
+              "type": "long",
+              "logicalType": "local-timestamp-micros"
+            }
+          },
+          {
+            "name": "IncidentNum",
+            "doc": "Номер инцидента",
+            "type": "string"
+          },
+          {
+            "name": "InitiatorEventId",
+            "doc": "ID сработки по которой создано событие",
+            "type": "string"
+          },
+          {
+            "name": "ExtSrcModule",
+            "doc": "Идентификатор ФП, которой адресуется сообщение",
+            "type": "string"
+          }
+        ]
+      }
+    }
+  ]
+}

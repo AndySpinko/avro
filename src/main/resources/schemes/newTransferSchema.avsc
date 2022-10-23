@@ -1,0 +1,42 @@
+{
+  "namespace": "com.andy.avro",
+  "type": "record",
+  "doc": "Avro схема для передачи сервисам статуса регистрации их обращения в системе TaskFlow",
+  "name": "incidentRegistration",
+  "fields": [
+    {
+      "name": "header",
+      "doc": "Служебный заголовок события",
+      "type": "string"
+    },
+    {
+      "name": "sndType",
+      "doc": "Идентификации типа события и соответствующей ему схемы",
+      "type": "string"
+    },
+    {
+      "name": "sndVersion",
+      "doc": "Версия схемы события",
+      "type": "string"
+    },
+    {
+      "name": "sndDate",
+      "doc": "Дата отправки события источником",
+      "type": {
+        "type": "long",
+        "logicalType": "local-timestamp-micros"
+      }
+    },
+    {
+      "name": "prevEvtID",
+      "doc": "ID предыдущего события в потоке событий источника",
+      "type": "string",
+      "default": "NONE"
+    },
+    {
+      "name": "signature",
+      "doc": "системная подпись",
+      "type": "string"
+    }
+  ]
+}
